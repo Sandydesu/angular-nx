@@ -27,12 +27,21 @@
     ]
   },
   "projects": {
+    "data-access": {
+      "tags": []
+    },
     "e-cart": {
       "tags": []
     },
     "e-cart-e2e": {
       "tags": [],
       "implicitDependencies": ["e-cart"]
+    },
+    "feature": {
+      "tags": []
+    },
+    "shared": {
+      "tags": []
     }
   }
 }

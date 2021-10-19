@@ -1,1 +1,29 @@
-<p>sidenav works!</p>
+<mat-list>
+  <mat-list-item>
+    <a [routerLink]="['']">
+      <mat-icon aria-hidden="false" aria-label="Search icon"> search </mat-icon>
+      Search
+    </a>
+  </mat-list-item>
+  <mat-list-item>
+    <a [routerLink]="['']">
+      <mat-icon
+        aria-hidden="false"
+        aria-label="Cart icon"
+        [matBadge]="0"
+        matBadgeColor="warn"
+      >
+        shopping_cart
+      </mat-icon>
+      Cart
+    </a>
+  </mat-list-item>
+  <mat-list-item>
+    <a [routerLink]="['']">
+      <mat-icon aria-hidden="false" aria-label="Collection icon" [matBadge]="0">
+        collections
+      </mat-icon>
+      Collection
+    </a>
+  </mat-list-item>
+</mat-list>

@@ -1,0 +1,11 @@
+mat-card {
+  margin: 10px;
+  min-height: 170px;
+  mat-card-header {
+    justify-content: space-between;
+    .book-image {
+      width: 75px;
+      height: 100px;
+    }
+  }
+}

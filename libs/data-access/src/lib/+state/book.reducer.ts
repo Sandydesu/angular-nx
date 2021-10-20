@@ -11,6 +11,8 @@ export interface State extends EntityState<BookEntity> {
   loaded: boolean;
   error?: string | null;
   searchTerm?: string;
+  cartItems?: BookEntity[];
+  buyNowItems?: BookEntity[];
 }
 
 export interface BookPartialState {
@@ -35,6 +37,22 @@ const bookReducer = createReducer(
   on(BookActions.loadBookSuccess, (state, { book }) =>
     bookAdapter.setAll(book, { ...state, loaded: true })
   ),
+  on(BookActions.selectedBook, (state, { bookId }) => ({
+    ...state,
+    selectedId: bookId,
+  })),
+  on(BookActions.addToCart, (state, { items }) => ({
+    ...state,
+    cartItems: items,
+  })),
+  on(BookActions.buyNow, (state, { book }) => {
+    const items = state.buyNowItems || [];
+    items.push(book);
+    return {
+      ...state,
+      buyNowItems: items,
+    };
+  }),
   on(BookActions.loadBookFailure, (state, { error }) => ({ ...state, error }))
 );
 

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'myorg-search',
@@ -6,6 +6,6 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./search.component.scss'],
 })
 export class SearchComponent {
-  searchTerm = '';
+  @Input() searchTerm: any = '';
   @Output() search: EventEmitter<string> = new EventEmitter<string>();
 }

@@ -34,3 +34,18 @@ export const getSelected = createSelector(
   getSelectedId,
   (entities, selectedId) => (selectedId ? entities[selectedId] : undefined)
 );
+
+export const getSearchTerm = createSelector(
+  getBookState,
+  (state: State) => state.searchTerm
+);
+
+export const getCartList = createSelector(
+  getBookState,
+  (state: State) => state.cartItems
+);
+
+export const getCartCount = createSelector(
+  getBookState,
+  (state: State) => state.cartItems?.length || 0
+);

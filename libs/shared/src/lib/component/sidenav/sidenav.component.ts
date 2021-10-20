@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'myorg-sidenav',
   templateUrl: './sidenav.component.html',
-  styleUrls: ['./sidenav.component.scss']
+  styleUrls: ['./sidenav.component.scss'],
 })
-export class SidenavComponent{
-
+export class SidenavComponent {
+  @Input() cartCount: any = 0;
+  @Input() collectionCount: any = 0;
 }

@@ -7,7 +7,7 @@ import { BookEntity } from '../../models/book.models';
   styleUrls: ['./book.component.scss'],
 })
 export class BookComponent {
-  @Input() book: BookEntity = {
+  @Input() book: any = {
     id: '',
     title: '',
     authors: [''],

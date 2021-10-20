@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { BookFacade } from '@myorg/data-access';
 
@@ -11,7 +12,8 @@ import { BookEntity } from '@myorg/shared';
 export class BooksListComponent {
   books$ = this.bookFacade.allBook$;
   loaded$ = this.bookFacade.loaded$;
-  constructor(private bookFacade: BookFacade) {}
+  searchTerm$ = this.bookFacade.searchTerm$;
+  constructor(private bookFacade: BookFacade, private router: Router) {}
 
   search(searchTerm: string): void {
     this.bookFacade.search(searchTerm);
@@ -19,5 +21,10 @@ export class BooksListComponent {
 
   trackById(index: number, book: BookEntity): string {
     return book.id;
+  }
+
+  selectedBook(bookId: string) {
+    this.bookFacade.selectedBook(bookId);
+    this.router.navigate(['/books', bookId]);
   }
 }

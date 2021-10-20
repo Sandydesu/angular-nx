@@ -1,13 +1,1 @@
-<mat-toolbar color="primary">
-  <mat-toolbar-row>
-    <myorg-header (toggleOnOff)="drawer.toggle()"></myorg-header>
-  </mat-toolbar-row>
-</mat-toolbar>
-<mat-drawer-container hasBackdrop="false">
-  <mat-drawer #drawer mode="side" opened>
-    <myorg-sidenav></myorg-sidenav>
-  </mat-drawer>
-  <mat-drawer-content>
-    <myorg-feature></myorg-feature>
-  </mat-drawer-content>
-</mat-drawer-container>
+<myorg-feature></myorg-feature>

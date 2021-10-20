@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RouterModule } from '@angular/router';
 
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
+import { FeatureModule } from '@myorg/feature';
 import { SharedModule } from '@myorg/shared';
 
 import { AppComponent } from './app.component';
@@ -14,11 +14,11 @@ import { AppComponent } from './app.component';
   declarations: [AppComponent],
   imports: [
     BrowserModule,
-    SharedModule,
     BrowserAnimationsModule,
+    FeatureModule,
+    SharedModule,
     MatSidenavModule,
-    MatToolbarModule,
-    RouterModule.forRoot([]),
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent],

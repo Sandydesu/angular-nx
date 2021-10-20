@@ -1,0 +1,16 @@
+<form #searchForm="ngForm">
+  <mat-form-field appearance="fill">
+    <mat-label>Search books</mat-label>
+    <input
+      id="searchTerm"
+      type="search"
+      matInput
+      placeholder="Ex. Angular"
+      [(ngModel)]="searchTerm"
+      name="search"
+    />
+    <mat-icon matSuffix id="searchButton" (click)="search.next(searchTerm)">
+      search
+    </mat-icon>
+  </mat-form-field>
+</form>

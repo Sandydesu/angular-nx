@@ -4,6 +4,7 @@ import { BookFacade } from '@myorg/data-access';
 import { BookEntity } from '@myorg/shared';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'myorg-book-details',
@@ -14,7 +15,7 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
   book: BookEntity | any;
 
   unSubscribe$ = new Subject();
-  constructor(private bookFacade: BookFacade, private location: Location) {}
+  constructor(private bookFacade: BookFacade, private location: Location, private router:Router) {}
 
   ngOnInit() {
     this.bookFacade.selectedBook$
@@ -32,7 +33,8 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
   }
 
   buyNow() {
-    // this.bookFacade.addToBuyNow(this.book.id);
+    this.bookFacade.addItemTobuyNow(this.book);
+    this.router.navigate(['/buyNow']);
   }
 
   ngOnDestroy() {

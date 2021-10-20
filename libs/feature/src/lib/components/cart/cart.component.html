@@ -1,0 +1,46 @@
+<h1>Cart List</h1>
+<div fxFlexFill [fxLayout]="'row'" fxLayoutAlign="space-between">
+  <button
+    id="backButton"
+    mat-icon-button
+    color="primary"
+    aria-label="Back button"
+    (click)="back()"
+  >
+    <mat-icon>keyboard_backspace</mat-icon>
+  </button>
+  <button
+    id="buyNowButton"
+    mat-raised-button
+    color="accent"
+    aria-label="Buy now"
+    (click)="buyNow()"
+  >
+    Buy
+  </button>
+</div>
+<div fxFill fxLayout="row" fxLayoutAlign="center center">
+  <div fxFlexFill class="book-list">
+    <div
+      fxFlexFill
+      [fxLayout]="'row wrap'"
+      fxLayoutGap="10px 5px grid"
+      style="cursor: pointer"
+      fxLayoutAlign="space-around center"
+    >
+      <div
+        id="bookList"
+        fxFlex="40"
+        *ngFor="let book of cartList$ | async; trackBy: trackById"
+      >
+        <div class="one" fxFlexFill>
+          <myorg-book [book]="book">
+            <button mat-raised-button color="accent" id="removeButton" (click)="remove(book)">
+              Remove
+            </button>
+          </myorg-book>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

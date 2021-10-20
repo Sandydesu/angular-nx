@@ -38,7 +38,11 @@ export const removeFromCart = createAction(
   props<{ book: BookEntity }>()
 );
 
-export const buyNow = createAction(
-  '[Book/API] Buy now',
+export const addItemTobuyNow = createAction(
+  '[Book/API] Add Item To Buy Now',
   props<{ book: BookEntity }>()
+);
+
+export const addCartItemsTobuyNow = createAction(
+  '[Book/API] Add Cart Items To Buy Now'
 );

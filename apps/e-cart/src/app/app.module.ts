@@ -7,6 +7,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { FeatureModule } from '@myorg/feature';
+
 import { AppComponent } from './app.component';
 
 @NgModule({

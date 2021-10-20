@@ -13,6 +13,7 @@ export interface State extends EntityState<BookEntity> {
   searchTerm?: string;
   cartItems?: BookEntity[];
   buyNowItems?: BookEntity[];
+  isCart?: boolean;
 }
 
 export interface BookPartialState {
@@ -45,14 +46,19 @@ const bookReducer = createReducer(
     ...state,
     cartItems: items,
   })),
-  on(BookActions.buyNow, (state, { book }) => {
-    const items = state.buyNowItems || [];
+  on(BookActions.addItemTobuyNow, (state, { book }) => {
+    const items = state.buyNowItems ? [...state.buyNowItems] : [];
     items.push(book);
     return {
       ...state,
       buyNowItems: items,
     };
   }),
+  on(BookActions.addCartItemsTobuyNow, (state) => ({
+    ...state,
+    buyNowItems: state.cartItems,
+    isCart: true,
+  })),
   on(BookActions.loadBookFailure, (state, { error }) => ({ ...state, error }))
 );
 

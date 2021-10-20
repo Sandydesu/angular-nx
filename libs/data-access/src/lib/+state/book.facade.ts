@@ -12,6 +12,8 @@ export class BookFacade {
   allBook$ = this.store.pipe(select(BookSelectors.getAllBook));
   selectedBook$ = this.store.pipe(select(BookSelectors.getSelected));
   searchTerm$ = this.store.pipe(select(BookSelectors.getSearchTerm));
+  cartCount$ = this.store.pipe(select(BookSelectors.getCartCount));
+  cartList$ = this.store.pipe(select(BookSelectors.getCartList));
 
   constructor(private readonly store: Store) {}
 
@@ -27,11 +29,19 @@ export class BookFacade {
     this.store.dispatch(BookActions.addToCartInit({ book }));
   }
 
+  removeItemFromCart(book: BookEntity) {
+    this.store.dispatch(BookActions.removeFromCart({ book }));
+  }
+
   loadCart() {
     this.store.dispatch(BookActions.loadCart());
   }
 
-  buyNow(book: BookEntity) {
-    this.store.dispatch(BookActions.buyNow({ book }));
+  addItemTobuyNow(book: BookEntity) {
+    this.store.dispatch(BookActions.addItemTobuyNow({ book }));
+  }
+
+  addCartItemsToBuyNow() {
+    this.store.dispatch(BookActions.addCartItemsTobuyNow());
   }
 }

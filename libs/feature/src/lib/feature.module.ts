@@ -14,6 +14,8 @@ import { SharedModule } from '@myorg/shared';
 import { FeatureComponent } from './feature.component';
 import { BooksListComponent } from './components/books-list/books-list.component';
 import { BookDetailsComponent } from './components/book-details/book-details.component';
+import { CartComponent } from './components/cart/cart.component';
+import { BuynowComponent } from './components/buynow/buynow.component';
 
 const routes: Route[] = [
   {
@@ -24,6 +26,14 @@ const routes: Route[] = [
   {
     path: 'books/:book_id',
     component: BookDetailsComponent,
+  },
+  {
+    path: 'cart',
+    component: CartComponent,
+  },
+  {
+    path: 'buyNow',
+    component: BuynowComponent,
   },
   { path: '**', redirectTo: 'books' },
 ];
@@ -39,7 +49,13 @@ const routes: Route[] = [
     MatToolbarModule,
     RouterModule.forRoot(routes),
   ],
-  declarations: [FeatureComponent, BooksListComponent, BookDetailsComponent],
+  declarations: [
+    FeatureComponent,
+    BooksListComponent,
+    BookDetailsComponent,
+    CartComponent,
+    BuynowComponent,
+  ],
   exports: [FeatureComponent],
 })
 export class FeatureModule {}

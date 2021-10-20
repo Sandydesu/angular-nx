@@ -5,7 +5,10 @@
 </mat-toolbar>
 <mat-drawer-container hasBackdrop="false">
   <mat-drawer #drawer mode="side" opened>
-    <myorg-sidenav [cartCount]="cartCount$ | async"></myorg-sidenav>
+    <myorg-sidenav
+      [cartCount]="cartCount$ | async"
+      [collectionCount]="collectionCount$ | async"
+    ></myorg-sidenav>
   </mat-drawer>
   <mat-drawer-content>
     <router-outlet></router-outlet>

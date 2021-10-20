@@ -56,3 +56,7 @@ export const collectionsAddedSuccess = createAction(
   '[Book/API] Collections Added Successfully',
   props<{ collections: CollectionEntity[]; isCart: boolean }>()
 );
+
+export const loadCollection = createAction(
+  '[Book/API] Load Collection'
+);

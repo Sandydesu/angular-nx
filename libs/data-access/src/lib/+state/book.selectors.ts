@@ -59,3 +59,13 @@ export const isCart = createSelector(
   getBookState,
   (state: State) => state.isCart
 );
+
+export const collectionCount = createSelector(
+  getBookState,
+  (state: State) => state.collections?.length || 0
+);
+
+export const collectionList = createSelector(
+  getBookState,
+  (state: State) => state.collections
+);

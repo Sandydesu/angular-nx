@@ -18,6 +18,7 @@ import { BooksListComponent } from './components/books-list/books-list.component
 import { BookDetailsComponent } from './components/book-details/book-details.component';
 import { CartComponent } from './components/cart/cart.component';
 import { BuynowComponent } from './components/buynow/buynow.component';
+import { CollectionsComponent } from './components/collections/collections.component';
 
 const routes: Route[] = [
   {
@@ -37,6 +38,10 @@ const routes: Route[] = [
     path: 'buyNow',
     component: BuynowComponent,
   },
+  {
+    path: 'collections',
+    component: CollectionsComponent,
+  },
   { path: '**', redirectTo: 'books' },
 ];
 @NgModule({
@@ -51,7 +56,7 @@ const routes: Route[] = [
     MatSidenavModule,
     MatToolbarModule,
     RouterModule.forRoot(routes),
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   declarations: [
     FeatureComponent,
@@ -59,6 +64,7 @@ const routes: Route[] = [
     BookDetailsComponent,
     CartComponent,
     BuynowComponent,
+    CollectionsComponent,
   ],
   exports: [FeatureComponent],
 })

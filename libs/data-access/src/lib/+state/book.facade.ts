@@ -16,6 +16,8 @@ export class BookFacade {
   cartList$ = this.store.pipe(select(BookSelectors.getCartList));
   buynowList$ = this.store.pipe(select(BookSelectors.getBuyNowList));
   isCart$ = this.store.pipe(select(BookSelectors.isCart));
+  collectionCount$ = this.store.pipe(select(BookSelectors.collectionCount));
+  collectionList$ = this.store.pipe(select(BookSelectors.collectionList));
 
   constructor(private readonly store: Store) {}
 
@@ -51,5 +53,9 @@ export class BookFacade {
     this.store.dispatch(
       BookActions.addToCollectionsInit({ collection, isCart })
     );
+  }
+
+  loadCollections() {
+    this.store.dispatch(BookActions.loadCollection());
   }
 }

@@ -101,6 +101,24 @@ export class BookEffects {
     )
   );
 
+  collectionLoad$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(BookActions.loadCart),
+      switchMap(() => {
+        const collectionDetails = this.webStorageService.getItem('collections');
+        const collectionList = collectionDetails
+          ? JSON.parse(collectionDetails)
+          : [];
+        return of(
+          BookActions.collectionsAddedSuccess({
+            collections: collectionList,
+            isCart: false,
+          })
+        );
+      })
+    )
+  );
+
   constructor(
     private readonly actions$: Actions,
     private booksService: BooksService,

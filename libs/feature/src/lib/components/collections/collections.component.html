@@ -1,0 +1,39 @@
+<h1>My Collections</h1>
+<div fxFill>
+  <div
+    *ngFor="let collection of myCollections$ | async; trackBy: trackByEmail"
+    fxLayout="column"
+    class="collection"
+  >
+    <div
+      fxFill
+      fxLayout="column"
+      fxLayoutAlign="space-between"
+      class="person-details"
+    >
+      <div>
+        <span><strong>Name : </strong> {{ collection?.name }}</span>
+      </div>
+      <div>
+        <span><strong>Email : </strong> {{ collection?.email }}</span>
+      </div>
+      <div>
+        <span><strong>Phone : </strong> {{ collection?.phone }}</span>
+      </div>
+      <div>
+        <span fxLayout="row">
+          <strong>Address : </strong>
+          <Address>{{ collection?.address }}</Address>
+        </span>
+      </div>
+    </div>
+    <div fxLayout="row">
+      <div
+        *ngFor="let item of collection?.items; trackBy: trackById"
+        fxFlex="50"
+      >
+        <myorg-book *ngIf="item" [book]="item"> </myorg-book>
+      </div>
+    </div>
+  </div>
+</div>

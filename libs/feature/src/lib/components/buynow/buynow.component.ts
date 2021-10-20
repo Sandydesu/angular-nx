@@ -73,7 +73,7 @@ export class BuynowComponent implements OnInit, OnDestroy {
       items: this.books,
     };
     this.bookFacade.addToCollection(collection, this.isCart);
-    // this.router.navigate([COLLECTIONS]);
+    this.router.navigate(['collections']);
   }
 
   ngOnDestroy() {

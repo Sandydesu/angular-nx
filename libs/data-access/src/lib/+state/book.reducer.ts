@@ -2,7 +2,7 @@ import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 import { createReducer, on, Action } from '@ngrx/store';
 
 import * as BookActions from './book.actions';
-import { BookEntity } from '@myorg/shared';
+import { BookEntity, CollectionEntity } from '@myorg/shared';
 
 export const BOOK_FEATURE_KEY = 'book';
 
@@ -13,6 +13,7 @@ export interface State extends EntityState<BookEntity> {
   searchTerm?: string;
   cartItems?: BookEntity[];
   buyNowItems?: BookEntity[];
+  collections?: CollectionEntity[];
   isCart?: boolean;
 }
 
@@ -52,6 +53,7 @@ const bookReducer = createReducer(
     return {
       ...state,
       buyNowItems: items,
+      isCart: false,
     };
   }),
   on(BookActions.addCartItemsTobuyNow, (state) => ({
@@ -59,6 +61,19 @@ const bookReducer = createReducer(
     buyNowItems: state.cartItems,
     isCart: true,
   })),
+  on(BookActions.collectionsAddedSuccess, (state, { collections, isCart }) => {
+    let cartItems = state.cartItems ? [...state.cartItems] : [];
+    if (isCart) {
+      cartItems = [];
+    }
+    return {
+      ...state,
+      cartItems: cartItems,
+      buyNowItems: [],
+      collections: collections,
+      isCart: false,
+    };
+  }),
   on(BookActions.loadBookFailure, (state, { error }) => ({ ...state, error }))
 );
 

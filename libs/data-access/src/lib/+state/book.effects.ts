@@ -67,6 +67,40 @@ export class BookEffects {
     )
   );
 
+  addItemsToCollection$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(BookActions.addToCollectionsInit),
+      switchMap(({ collection, isCart }) => {
+        /**
+         * Collectons part
+         */
+        const collectionsDetails =
+          this.webStorageService.getItem('collections');
+        const collectionList = collectionsDetails
+          ? JSON.parse(collectionsDetails)
+          : [];
+        collectionList.push(collection);
+        this.webStorageService.setItem(
+          'collections',
+          JSON.stringify(collectionList)
+        );
+
+        /**
+         * Based on condition remove cart items
+         */
+        if (isCart) {
+          this.webStorageService.setItem('cartItems', JSON.stringify([]));
+        }
+        return of(
+          BookActions.collectionsAddedSuccess({
+            collections: collectionList,
+            isCart: isCart,
+          })
+        );
+      })
+    )
+  );
+
   constructor(
     private readonly actions$: Actions,
     private booksService: BooksService,

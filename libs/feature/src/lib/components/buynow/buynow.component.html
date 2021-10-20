@@ -1,1 +1,79 @@
-<p>buynow works!</p>
+<h1>Buy Now</h1>
+<button
+  id="backButton"
+  mat-icon-button
+  color="primary"
+  aria-label="Back button"
+  (click)="back()"
+>
+  <mat-icon>keyboard_backspace</mat-icon>
+</button>
+<div fxLayout="row" fxLayoutAlign="space-around">
+  <div fxFlex="40" fxLayoutGap="20px">
+    <ng-container *ngFor="let book of books; trackBy: trackById">
+      <myorg-book [book]="book"></myorg-book>
+    </ng-container>
+  </div>
+  <div fxFlex="40" fxLayoutGap="20px" class="buy-now-details">
+    <form [formGroup]="buyNowForm">
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Name</mat-label>
+          <input
+            matInput
+            placeholder="Name"
+            formControlName="name"
+            [value]="buyNowForm.get('name')?.value"
+          />
+          <mat-error>Name Required!</mat-error>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Phone Number</mat-label>
+          <input
+            matInput
+            id="phoneNumber"
+            placeholder="Phone Number"
+            formControlName="phone"
+            [value]="buyNowForm.get('phone')?.value | phone"
+          />
+          <mat-error>Phone Number Required!</mat-error>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input
+            matInput
+            placeholder="Email"
+            formControlName="email"
+            [value]="buyNowForm.get('email')?.value"
+          />
+          <mat-error>Email Required!</mat-error>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Address</mat-label>
+          <textarea
+            matInput
+            placeholder="Address"
+            formControlName="address"
+            [value]="buyNowForm.get('address')?.value"
+          ></textarea>
+          <mat-error>Address Required!</mat-error>
+        </mat-form-field>
+      </p>
+      <button
+        id="buyNowButton"
+        mat-stroked-button
+        color="accent"
+        [disabled]="!buyNowForm.valid"
+        (click)="buyNow()"
+      >
+        Submit
+      </button>
+    </form>
+  </div>
+</div>

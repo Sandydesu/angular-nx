@@ -15,13 +15,20 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
   book: BookEntity | any;
 
   unSubscribe$ = new Subject();
-  constructor(private bookFacade: BookFacade, private location: Location, private router:Router) {}
+  constructor(
+    private bookFacade: BookFacade,
+    private location: Location,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.bookFacade.selectedBook$
       .pipe(takeUntil(this.unSubscribe$))
       .subscribe((book) => {
         this.book = book;
+        if (!book) {
+          this.router.navigate(['/book']);
+        }
       });
   }
   back() {

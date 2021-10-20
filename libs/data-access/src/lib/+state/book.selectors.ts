@@ -49,3 +49,13 @@ export const getCartCount = createSelector(
   getBookState,
   (state: State) => state.cartItems?.length || 0
 );
+
+export const getBuyNowList = createSelector(
+  getBookState,
+  (state: State) => state.buyNowItems
+);
+
+export const isCart = createSelector(
+  getBookState,
+  (state: State) => state.isCart
+);

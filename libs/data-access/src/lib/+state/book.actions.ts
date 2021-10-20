@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { BookEntity } from '@myorg/shared';
+import { BookEntity, CollectionEntity } from '@myorg/shared';
 
 export const init = createAction(
   '[Book Page] Init',
@@ -45,4 +45,14 @@ export const addItemTobuyNow = createAction(
 
 export const addCartItemsTobuyNow = createAction(
   '[Book/API] Add Cart Items To Buy Now'
+);
+
+export const addToCollectionsInit = createAction(
+  '[Book/API] Add To Collections',
+  props<{ collection: CollectionEntity; isCart: boolean }>()
+);
+
+export const collectionsAddedSuccess = createAction(
+  '[Book/API] Collections Added Successfully',
+  props<{ collections: CollectionEntity[]; isCart: boolean }>()
 );

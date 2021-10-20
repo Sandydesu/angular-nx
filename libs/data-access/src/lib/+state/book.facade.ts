@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BookEntity } from '@myorg/shared';
+import { BookEntity, CollectionEntity } from '@myorg/shared';
 import { select, Store } from '@ngrx/store';
 
 import * as BookActions from './book.actions';
@@ -14,6 +14,8 @@ export class BookFacade {
   searchTerm$ = this.store.pipe(select(BookSelectors.getSearchTerm));
   cartCount$ = this.store.pipe(select(BookSelectors.getCartCount));
   cartList$ = this.store.pipe(select(BookSelectors.getCartList));
+  buynowList$ = this.store.pipe(select(BookSelectors.getBuyNowList));
+  isCart$ = this.store.pipe(select(BookSelectors.isCart));
 
   constructor(private readonly store: Store) {}
 
@@ -43,5 +45,11 @@ export class BookFacade {
 
   addCartItemsToBuyNow() {
     this.store.dispatch(BookActions.addCartItemsTobuyNow());
+  }
+
+  addToCollection(collection: CollectionEntity, isCart: boolean) {
+    this.store.dispatch(
+      BookActions.addToCollectionsInit({ collection, isCart })
+    );
   }
 }

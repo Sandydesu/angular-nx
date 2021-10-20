@@ -13,6 +13,7 @@ export class BooksListComponent {
   books$ = this.bookFacade.allBook$;
   loaded$ = this.bookFacade.loaded$;
   searchTerm$ = this.bookFacade.searchTerm$;
+  error$ = this.bookFacade.error$;
   constructor(private bookFacade: BookFacade, private router: Router) {}
 
   search(searchTerm: string): void {

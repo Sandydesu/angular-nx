@@ -74,7 +74,11 @@ const bookReducer = createReducer(
       isCart: false,
     };
   }),
-  on(BookActions.loadBookFailure, (state, { error }) => ({ ...state, error }))
+  on(BookActions.loadBookFailure, (state, { error }) => ({
+    ...state,
+    error,
+    loaded: true,
+  }))
 );
 
 export function reducer(state: State | undefined, action: Action) {

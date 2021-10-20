@@ -18,6 +18,7 @@ export class BookFacade {
   isCart$ = this.store.pipe(select(BookSelectors.isCart));
   collectionCount$ = this.store.pipe(select(BookSelectors.collectionCount));
   collectionList$ = this.store.pipe(select(BookSelectors.collectionList));
+  error$ = this.store.pipe(select(BookSelectors.getBookError));
 
   constructor(private readonly store: Store) {}
 

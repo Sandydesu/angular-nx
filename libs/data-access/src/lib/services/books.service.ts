@@ -10,6 +10,7 @@ export class BooksService {
   constructor(private http: HttpClient) {}
 
   getBooksByName(bookName: string) {
+    bookName = bookName || '';
     const params = new HttpParams().set('q', bookName.trim());
     return this.http.get<BookEntity[]>(BOOK_URL, { params }).pipe(
       map((resp: any) => {

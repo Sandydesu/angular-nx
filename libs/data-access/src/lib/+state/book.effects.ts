@@ -19,9 +19,10 @@ export class BookEffects {
       switchMap(({ searchTerm }) =>
         this.booksService.getBooksByName(searchTerm).pipe(
           map((books) => BookActions.loadBookSuccess({ book: books })),
-          catchError((error) =>
-            of(BookActions.loadBookFailure({ error: error['error'].message }))
-          )
+          catchError((error) => {
+            console.log(error);
+            return of(BookActions.loadBookFailure({ error: error.error.error.message }));
+          })
         )
       )
     )

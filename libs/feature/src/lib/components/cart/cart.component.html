@@ -13,6 +13,7 @@
     id="buyNowButton"
     mat-raised-button
     color="accent"
+    [disabled]="(cartList$ | async)?.length === 0"
     aria-label="Buy now"
     (click)="buyNow()"
   >
@@ -28,14 +29,23 @@
       style="cursor: pointer"
       fxLayoutAlign="space-around center"
     >
+      <div class="error-message" *ngIf="(cartList$ | async)?.length === 0">
+        <p>Cart is empty</p>
+      </div>
       <div
         id="bookList"
         fxFlex="40"
+        fxLayoutGap="10px 5px grid"
         *ngFor="let book of cartList$ | async; trackBy: trackById"
       >
         <div class="one" fxFlexFill>
           <myorg-book [book]="book">
-            <button mat-raised-button color="accent" id="removeButton" (click)="remove(book)">
+            <button
+              mat-raised-button
+              color="accent"
+              id="removeButton"
+              (click)="remove(book)"
+            >
               Remove
             </button>
           </myorg-book>

@@ -1,7 +1,27 @@
 <h1>Search</h1>
 <div fxLayout="row" fxLayoutAlign="center">
-  <myorg-search></myorg-search>
+  <myorg-search (search)="search($event)"></myorg-search>
 </div>
 <div fxFill fxLayout="row" fxLayoutAlign="center center">
-  <myorg-book></myorg-book>
+  <div fxFlexFill *ngIf="loaded$ | async" class="book-list">
+    <div
+      fxFlexFill
+      [fxLayout]="'row wrap'"
+      fxLayoutGap="10px 5px grid"
+      style="cursor: pointer"
+      fxLayoutAlign="space-around center"
+    >
+      <div
+        id="bookList"
+        fxFlex="40"
+        *ngFor="let book of books$ | async; trackBy: trackById"
+      >
+        <div class="one" fxFlexFill>
+          <myorg-book [book]="book"></myorg-book>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <myorg-spinner [isLoaded]="loaded$ | async"></myorg-spinner>
 </div>

@@ -1,15 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
+import { BookFacade } from '@myorg/data-access';
+
+import { BookEntity } from '@myorg/shared';
 @Component({
   selector: 'myorg-books-list',
   templateUrl: './books-list.component.html',
-  styleUrls: ['./books-list.component.scss']
+  styleUrls: ['./books-list.component.scss'],
 })
-export class BooksListComponent implements OnInit {
+export class BooksListComponent {
+  books$ = this.bookFacade.allBook$;
+  loaded$ = this.bookFacade.loaded$;
+  constructor(private bookFacade: BookFacade) {}
 
-  constructor() { }
-
-  ngOnInit(): void {
+  search(searchTerm: string): void {
+    this.bookFacade.search(searchTerm);
   }
 
+  trackById(index: number, book: BookEntity): string {
+    return book.id;
+  }
 }

@@ -45,7 +45,7 @@ const EXPORTS = [
     MatProgressSpinnerModule,
     RouterModule,
   ],
-  declarations: [...EXPORTS],
-  exports: [...EXPORTS],
+  declarations: EXPORTS,
+  exports: EXPORTS,
 })
 export class SharedModule {}

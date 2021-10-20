@@ -1,7 +1,10 @@
 import { createAction, props } from '@ngrx/store';
-import { BookEntity } from './book.models';
+import { BookEntity } from '@myorg/shared';
 
-export const init = createAction('[Book Page] Init');
+export const init = createAction(
+  '[Book Page] Init',
+  props<{ searchTerm: string }>()
+);
 
 export const loadBookSuccess = createAction(
   '[Book/API] Load Book Success',
@@ -10,5 +13,5 @@ export const loadBookSuccess = createAction(
 
 export const loadBookFailure = createAction(
   '[Book/API] Load Book Failure',
-  props<{ error: any }>()
+  props<{ error: string }>()
 );

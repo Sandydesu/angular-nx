@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { BookEntity } from '../../models/book.models';
 
 @Component({
   selector: 'myorg-book',
@@ -6,25 +7,14 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./book.component.scss'],
 })
 export class BookComponent {
-  @Input() book = {
+  @Input() book: BookEntity = {
     id: '',
-    selfLink: '',
-    volumeInfo: {
-      title: '',
-      authors: [],
-      description: '',
-      publishedDate: '',
-      publisher: '',
-      pageCount: 0,
-      printType: '',
-      categories: [],
-      imageLinks: {
-        smallThumbnail: '',
-        thumbnail: '',
-      },
-      previewLink: '',
-      language: '',
-    },
+    title: '',
+    authors: [''],
+    description: '',
+    publisher: '',
+    publishedDate: '',
+    coverUrl: '',
   };
   @Input() fullDetails = false;
 }

@@ -1,46 +1,25 @@
 <mat-card *ngIf="book.id !== ''">
   <mat-card-header>
-    <mat-card-title>{{ book?.volumeInfo?.title }}</mat-card-title>
+    <mat-card-title>{{ book?.title }}</mat-card-title>
 
-    <mat-card-subtitle>{{
-      book?.volumeInfo?.authors?.join(',')
-    }}</mat-card-subtitle>
+    <mat-card-subtitle>{{ book?.authors?.join(',') }}</mat-card-subtitle>
 
-    <img
-      class="book-image"
-      src="{{ book?.volumeInfo?.imageLinks?.smallThumbnail }}"
-      [alt]="book?.volumeInfo?.title"
-    />
+    <img class="book-image" src="{{ book?.coverUrl }}" [alt]="book?.title" />
   </mat-card-header>
   <mat-card-content>
     <ng-container *ngIf="fullDetails; else lowDetails">
       <div fxLayout="column">
         <div id="publisher">
-          <span
-            ><strong>Publisher : </strong>
-            {{ book?.volumeInfo?.publisher }}</span
-          >
-        </div>
-        <div id="pageCount">
-          <span
-            ><strong>Page Count : </strong>
-            {{ book?.volumeInfo?.pageCount }}</span
-          >
-        </div>
-        <div id="language">
-          <span
-            ><strong>Language : </strong> {{ book?.volumeInfo?.language }}</span
-          >
+          <span><strong>Publisher : </strong> {{ book?.publisher }}</span>
         </div>
         <div id="publishDate">
           <span
-            ><strong>Published date :</strong>
-            {{ book?.volumeInfo?.publishedDate }}</span
+            ><strong>Published date :</strong> {{ book?.publishedDate }}</span
           >
         </div>
         <div id="description">
           <p>
-            {{ book?.volumeInfo?.description }}
+            {{ book?.description }}
           </p>
         </div>
       </div>
@@ -48,7 +27,7 @@
 
     <ng-template #lowDetails>
       <p>
-        {{ book?.volumeInfo?.description || '' | more: 150:149 }}
+        {{ book?.description || '' | more: 150:149 }}
       </p>
     </ng-template>
   </mat-card-content>

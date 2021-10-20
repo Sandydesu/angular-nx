@@ -2,14 +2,15 @@ import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 import { createReducer, on, Action } from '@ngrx/store';
 
 import * as BookActions from './book.actions';
-import { BookEntity } from './book.models';
+import { BookEntity } from '@myorg/shared';
 
 export const BOOK_FEATURE_KEY = 'book';
 
 export interface State extends EntityState<BookEntity> {
-  selectedId?: string | number; // which Book record has been selected
-  loaded: boolean; // has the Book list been loaded
-  error?: string | null; // last known error (if any)
+  selectedId?: string | number;
+  loaded: boolean;
+  error?: string | null;
+  searchTerm?: string;
 }
 
 export interface BookPartialState {
@@ -20,13 +21,17 @@ export const bookAdapter: EntityAdapter<BookEntity> =
   createEntityAdapter<BookEntity>();
 
 export const initialState: State = bookAdapter.getInitialState({
-  // set initial required properties
-  loaded: false,
+  loaded: true,
 });
 
 const bookReducer = createReducer(
   initialState,
-  on(BookActions.init, (state) => ({ ...state, loaded: false, error: null })),
+  on(BookActions.init, (state, { searchTerm }) => ({
+    ...state,
+    loaded: false,
+    error: null,
+    searchTerm: searchTerm,
+  })),
   on(BookActions.loadBookSuccess, (state, { book }) =>
     bookAdapter.setAll(book, { ...state, loaded: true })
   ),

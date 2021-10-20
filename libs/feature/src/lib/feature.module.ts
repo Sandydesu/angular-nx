@@ -19,10 +19,10 @@ const routes: Route[] = [
 @NgModule({
   imports: [
     CommonModule,
+    SharedModule,
     DataAccessModule,
     FlexLayoutModule,
     RouterModule.forRoot(routes),
-    SharedModule,
   ],
   declarations: [FeatureComponent, BooksListComponent],
   exports: [FeatureComponent],

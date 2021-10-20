@@ -43,7 +43,10 @@
             "tsConfig": "apps/e-cart/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": ["apps/e-cart/src/favicon.ico", "apps/e-cart/src/assets"],
-            "styles": ["./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css", "apps/e-cart/src/styles.scss"],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
+              "apps/e-cart/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {

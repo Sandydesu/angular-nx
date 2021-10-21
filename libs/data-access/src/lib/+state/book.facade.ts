@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
-import { BookEntity, CollectionEntity } from '@myorg/shared';
 import { select, Store } from '@ngrx/store';
 
 import * as BookActions from './book.actions';
 
 import * as BookSelectors from './book.selectors';
+
+import { BookEntity, CollectionEntity } from '@myorg/shared';
 
 @Injectable()
 export class BookFacade {

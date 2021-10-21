@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 
-import { BOOK_URL } from '../constants/api.constants';
-import { BookEntity } from '@myorg/shared';
 import { map } from 'rxjs/operators';
+
+import { BOOK_URL } from '../constants/api.constants';
+
+import { BookEntity } from '@myorg/shared';
 
 @Injectable()
 export class BooksService {

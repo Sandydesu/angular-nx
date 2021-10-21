@@ -1,4 +1,4 @@
-import { BookEntity } from "@myorg/shared";
+import { BookEntity } from "./book.models";
 
 export interface CollectionEntity {
   name: string;

@@ -6,6 +6,6 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./sidenav.component.scss'],
 })
 export class SidenavComponent {
-  @Input() cartCount: any = 0;
-  @Input() collectionCount: any = 0;
+  @Input() cartCount: number | any = 0;
+  @Input() collectionCount: number | any = 0;
 }

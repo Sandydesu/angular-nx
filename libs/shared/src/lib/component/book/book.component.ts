@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+
 import { BookEntity } from '../../models/book.models';
 
 @Component({
@@ -7,7 +8,7 @@ import { BookEntity } from '../../models/book.models';
   styleUrls: ['./book.component.scss'],
 })
 export class BookComponent {
-  @Input() book: any = {
+  @Input() book: BookEntity | any = {
     id: '',
     title: '',
     authors: [''],

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+
 import { BookFacade } from '@myorg/data-access';
 import { BookEntity, CollectionEntity } from '@myorg/shared';
 
@@ -15,6 +16,7 @@ export class CollectionsComponent {
   trackById(index: number, book: BookEntity): string {
     return book.id;
   }
+
   trackByEmail(index: number, collection: CollectionEntity): string {
     return collection.email;
   }

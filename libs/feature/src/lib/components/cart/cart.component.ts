@@ -13,6 +13,7 @@ import { BookEntity } from '@myorg/shared';
 })
 export class CartComponent {
   cartList$ = this.bookFacade.cartList$;
+  
   constructor(
     private bookFacade: BookFacade,
     private location: Location,

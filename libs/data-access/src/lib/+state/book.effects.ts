@@ -9,6 +9,7 @@ import { BooksService } from '../services/books.service';
 import { WebStorageService } from '../services/web-storage.service';
 
 import * as BookActions from './book.actions';
+
 import { BookEntity } from '@myorg/shared';
 
 @Injectable()

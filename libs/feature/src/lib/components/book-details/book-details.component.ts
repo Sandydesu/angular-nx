@@ -1,10 +1,12 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Location } from '@angular/common';
-import { BookFacade } from '@myorg/data-access';
-import { BookEntity } from '@myorg/shared';
+import { Router } from '@angular/router';
+
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { Router } from '@angular/router';
+
+import { BookFacade } from '@myorg/data-access';
+import { BookEntity } from '@myorg/shared';
 
 @Component({
   selector: 'myorg-book-details',
@@ -15,6 +17,7 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
   book: BookEntity | any;
 
   unSubscribe$ = new Subject();
+
   constructor(
     private bookFacade: BookFacade,
     private location: Location,
@@ -31,6 +34,7 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
         }
       });
   }
+  
   back() {
     this.location.back();
   }

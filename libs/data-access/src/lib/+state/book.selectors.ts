@@ -1,7 +1,7 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
+
 import { BOOK_FEATURE_KEY, State, bookAdapter } from './book.reducer';
 
-// Lookup the 'Book' feature state managed by NgRx
 export const getBookState = createFeatureSelector<State>(BOOK_FEATURE_KEY);
 
 const { selectAll, selectEntities } = bookAdapter.getSelectors();

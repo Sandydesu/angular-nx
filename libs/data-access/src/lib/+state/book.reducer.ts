@@ -2,6 +2,7 @@ import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 import { createReducer, on, Action } from '@ngrx/store';
 
 import * as BookActions from './book.actions';
+
 import { BookEntity, CollectionEntity } from '@myorg/shared';
 
 export const BOOK_FEATURE_KEY = 'book';

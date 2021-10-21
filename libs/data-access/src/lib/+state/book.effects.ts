@@ -21,8 +21,7 @@ export class BookEffects {
         this.booksService.getBooksByName(searchTerm).pipe(
           map((books) => BookActions.loadBookSuccess({ book: books })),
           catchError((error) => {
-            console.log(error);
-            return of(BookActions.loadBookFailure({ error: error.error.error.message }));
+            return of(BookActions.loadBookFailure({ error: error.message }));
           })
         )
       )
@@ -105,7 +104,7 @@ export class BookEffects {
 
   collectionLoad$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(BookActions.loadCart),
+      ofType(BookActions.loadCollection),
       switchMap(() => {
         const collectionDetails = this.webStorageService.getItem('collections');
         const collectionList = collectionDetails

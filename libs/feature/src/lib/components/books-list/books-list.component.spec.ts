@@ -4,11 +4,18 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { FormsModule } from '@angular/forms';
 
 import { BehaviorSubject } from 'rxjs';
 
 import { BookFacade } from '@myorg/data-access';
-import { BookEntity, SharedModule } from '@myorg/shared';
+import {
+  BookEntity,
+  BookComponent,
+  SearchComponent,
+  SpinnerComponent,
+  MorePipe
+} from '@myorg/shared';
 
 import { BooksListComponent } from './books-list.component';
 
@@ -42,12 +49,18 @@ describe('BooksListComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        SharedModule,
         BrowserModule,
         BrowserAnimationsModule,
         FlexLayoutModule,
+        FormsModule,
       ],
-      declarations: [BooksListComponent],
+      declarations: [
+        BooksListComponent,
+        BookComponent,
+        SearchComponent,
+        SpinnerComponent,
+        MorePipe
+      ],
       providers: [
         { provide: BookFacade, useValue: mockBookFacade },
         { provide: Router, useValue: router },

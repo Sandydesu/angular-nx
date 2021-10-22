@@ -4,21 +4,19 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatToolbarModule } from '@angular/material/toolbar';
-
 import { BookFacade } from '@myorg/data-access';
-import { SharedModule } from '@myorg/shared';
+import { SidenavComponent, HeaderComponent } from '@myorg/shared';
 import { BehaviorSubject } from 'rxjs';
 
 import { FeatureComponent } from './feature.component';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 describe('FeatureComponent', () => {
   let component: FeatureComponent;
   let fixture: ComponentFixture<FeatureComponent>;
   const mockBookFacade = {
-    cartCount$: new BehaviorSubject(0),
-    collectionCount$: new BehaviorSubject(0),
+    cartCount$: new BehaviorSubject<string>('0'),
+    collectionCount$: new BehaviorSubject<string>('0'),
     loadCart: jest.fn(),
     loadCollections: jest.fn(),
   };
@@ -26,16 +24,14 @@ describe('FeatureComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        SharedModule,
         BrowserModule,
         BrowserAnimationsModule,
         FlexLayoutModule,
-        MatSidenavModule,
-        MatToolbarModule,
         RouterTestingModule.withRoutes([]),
       ],
-      declarations: [FeatureComponent],
+      declarations: [FeatureComponent, HeaderComponent, SidenavComponent],
       providers: [{ provide: BookFacade, useValue: mockBookFacade }],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
     }).compileComponents();
   });
 
@@ -53,9 +49,11 @@ describe('FeatureComponent', () => {
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('#collectionCount')?.textContent).toEqual(
-      ' collections 0'
+      ' collections '
     );
-    expect(compiled.querySelector('#cartCount')?.textContent).toEqual(' shopping_cart 0');
+    expect(compiled.querySelector('#cartCount')?.textContent).toEqual(
+      ' shopping_cart '
+    );
     expect(mockBookFacade.loadCart).toHaveBeenCalled();
     expect(mockBookFacade.loadCollections).toHaveBeenCalled();
   });

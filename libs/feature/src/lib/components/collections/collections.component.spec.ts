@@ -2,11 +2,12 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { BehaviorSubject } from 'rxjs';
 
 import { BookFacade } from '@myorg/data-access';
-import { BookEntity, SharedModule } from '@myorg/shared';
+import { BookEntity, BookComponent, MorePipe } from '@myorg/shared';
 
 import { CollectionsComponent } from './collections.component';
 
@@ -39,14 +40,10 @@ describe('CollectionsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [
-        SharedModule,
-        BrowserModule,
-        BrowserAnimationsModule,
-        FlexLayoutModule,
-      ],
-      declarations: [CollectionsComponent],
+      imports: [BrowserModule, BrowserAnimationsModule, FlexLayoutModule],
+      declarations: [CollectionsComponent, BookComponent, MorePipe],
       providers: [{ provide: BookFacade, useValue: mockBookFacade }],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
     }).compileComponents();
   });
 

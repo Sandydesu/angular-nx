@@ -1,4 +1,5 @@
 import { Router } from '@angular/router';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { Location } from '@angular/common';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -6,12 +7,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MatIconModule } from '@angular/material/icon';
-import { MatInputModule } from '@angular/material/input';
-
 import { BehaviorSubject } from 'rxjs';
 
-import { BookEntity, SharedModule } from '@myorg/shared';
+import { BookEntity, PhonePipe } from '@myorg/shared';
 import { BookFacade } from '@myorg/data-access';
 
 import { BuynowComponent } from './buynow.component';
@@ -45,21 +43,19 @@ describe('BuynowComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        SharedModule,
         BrowserModule,
         BrowserAnimationsModule,
         FlexLayoutModule,
-        MatInputModule,
-        MatIconModule,
         ReactiveFormsModule,
       ],
-      declarations: [BuynowComponent],
+      declarations: [BuynowComponent, PhonePipe],
       providers: [
         FormBuilder,
         { provide: BookFacade, useValue: mockBookFacade },
         { provide: Router, useValue: router },
         { provide: Location, useValue: location },
       ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
     }).compileComponents();
   });
 

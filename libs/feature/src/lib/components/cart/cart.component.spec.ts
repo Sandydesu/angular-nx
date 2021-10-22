@@ -4,12 +4,11 @@ import { Router } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
-
-import { MatIconModule } from '@angular/material/icon';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { BehaviorSubject } from 'rxjs';
 
-import { BookEntity, SharedModule } from '@myorg/shared';
+import { BookEntity } from '@myorg/shared';
 import { BookFacade } from '@myorg/data-access';
 
 import { CartComponent } from './cart.component';
@@ -42,10 +41,8 @@ describe('CartComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        SharedModule,
         BrowserModule,
         BrowserAnimationsModule,
-        MatIconModule,
         FlexLayoutModule,
       ],
       declarations: [CartComponent],
@@ -54,6 +51,7 @@ describe('CartComponent', () => {
         { provide: Router, useValue: router },
         { provide: Location, useValue: location },
       ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
     }).compileComponents();
   });
 

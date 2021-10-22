@@ -7,7 +7,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Subject } from 'rxjs';
 
 import { BookFacade } from '@myorg/data-access';
-import { BookEntity, SharedModule } from '@myorg/shared';
+import { BookEntity, BookComponent } from '@myorg/shared';
 
 import { BookDetailsComponent } from './book-details.component';
 
@@ -39,13 +39,12 @@ describe('BookDetailsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SharedModule],
       providers: [
         { provide: BookFacade, useValue: mockBookFacade },
         { provide: Router, useValue: router },
         { provide: Location, useValue: location },
       ],
-      declarations: [BookDetailsComponent],
+      declarations: [BookDetailsComponent, BookComponent],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     }).compileComponents();
   });

@@ -32,16 +32,16 @@ localhost:4200
 To run the unit test cases
 
 ```sh
-for aoo
+For aoo
 npm run test
 
 For feature
 npm run test:feature
 
-for shared
+For shared
 npm run test:shared
 
-for data-access
+For data-access
 npm run test:data-access
 ```
 

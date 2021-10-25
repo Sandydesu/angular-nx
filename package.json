@@ -7,7 +7,10 @@
     "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2015 browser module main",
     "start": "nx serve",
     "build": "nx build",
-    "test": "nx test"
+    "test": "nx test",
+    "test:feature":"ng run feature:test",
+    "test:data-access":"ng run data-access:test",
+    "test:shared":"ng run shared:test"
   },
   "private": true,
   "dependencies": {
